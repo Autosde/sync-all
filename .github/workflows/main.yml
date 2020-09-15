@@ -11,7 +11,8 @@ jobs:
         with:
           repository: borisko123/manageiq
           path: local_manageiq
-      - run: |
+      - name: clone manageiq  
+        run: |
           pwd
           ls -al
           cd local_manageiq
@@ -22,3 +23,6 @@ jobs:
           git add .
           git commit -m "generated"
           git push
+        env:
+          REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+       
