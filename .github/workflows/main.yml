@@ -11,6 +11,7 @@ jobs:
         with:
           repository: borisko123/manageiq
           path: local_manageiq
+          token: ${{secrets.PAT_FOR_PUSH}} 
       - name: clone manageiq  
         run: |
           pwd
@@ -22,7 +23,8 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "generated"
-          git push
+          git push https://$USERNAME:REPO_KEY@github.com/borisko123/sync-all.git master
         env:
           REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+          USERNAME: bk-git-actions
        
