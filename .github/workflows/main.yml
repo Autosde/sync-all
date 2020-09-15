@@ -1,0 +1,17 @@
+name: Sync Fork All
+
+on:
+  workflow_dispatch: # on button click
+
+jobs:
+  sync-all:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: TG908/fork-sync@v1.2.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          owner: ManageIQ
+          base: master
+          head: master
