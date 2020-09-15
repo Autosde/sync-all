@@ -23,7 +23,7 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "generated"
-          git push https://$USERNAME:REPO_KEY@github.com/borisko123/sync-all.git master
+          git push https://$USERNAME:REPO_KEY@github.com/borisko123/manageiq.git master
         env:
           REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
           USERNAME: bk-git-actions
