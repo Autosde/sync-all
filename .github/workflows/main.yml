@@ -4,14 +4,17 @@ on:
   workflow_dispatch: # on button click
 
 jobs:
-  sync-all:
-
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: TG908/fork-sync@v1.2.0
+      uses: actions/checkout@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          owner: ManageIQ
-          base: master
-          head: master
+          repository: borisko123/manageiq
+          path: local-manageiq
+    - run: |
+        date > generated.txt
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        git commit -m "generated"
+        git push
