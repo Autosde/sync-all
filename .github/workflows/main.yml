@@ -14,6 +14,8 @@ jobs:
           token: ${{secrets.PAT_FOR_PUSH}} 
       - name: clone manageiq  
         run: |
+          echo "start clone manageiq and push"
+          git remote -v
           pwd
           ls -al
           cd local_manageiq
