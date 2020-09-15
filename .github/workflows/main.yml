@@ -12,6 +12,7 @@ jobs:
           repository: borisko123/manageiq
           path: local-manageiq
       - run: |
+          ls -al
           date > generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
