@@ -10,9 +10,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: borisko123/manageiq
-          path: local-manageiq
+          path: local_manageiq
       - run: |
           pwd
           ls -al
+          cd local_manageiq
           date > generated.txt
           ls -al
