@@ -15,10 +15,11 @@ jobs:
       - name: clone manageiq  
         run: |
           echo "start clone manageiq and push"
-          git remote -v
           pwd
           ls -al
           cd local_manageiq
+          echo "in manageiq folder"
+          git remote -v
           date > generated.txt
           ls -al
           git config user.name github-actions
