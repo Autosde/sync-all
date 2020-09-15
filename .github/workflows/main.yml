@@ -14,17 +14,17 @@ jobs:
           token: ${{secrets.PAT_FOR_PUSH}} 
       - name: clone manageiq  
         run: |
-          echo "start clone manageiq and push"
-          git remote -v
-          pwd
-          ls -al
           cd local_manageiq
-          date > generated.txt
-          ls -al
+          git status
+
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add .
-          git commit -m "generated"
+
+          git remote add upstream https://github.com/ManageIQ/manageiq.git
+          git remote -v
+          git fetch upstream
+
+          git merge upstream/master
           git push https://$USERNAME:REPO_KEY@github.com/borisko123/manageiq.git master
         env:
           REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
