@@ -7,27 +7,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: borisko123/manageiq
-          path: local_manageiq
-          token: ${{secrets.PAT_FOR_PUSH}} 
-      - name: clone manageiq  
-        run: |
-          cd local_manageiq
-          git status
+    - uses: actions/checkout@v2
+      with:
+        repository: borisko123/manageiq
+        path: local_manageiq
+        token: ${{secrets.PAT_FOR_PUSH}}
+    - name: clone manageiq
+      run: |
+        cd local_manageiq
+        git status
 
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+        git config user.name github-actions-autosde
+        git config user.email github-actions@github.com
 
-          git remote add upstream https://$USERNAME:REPO_KEY@github.com/ManageIQ/manageiq.git
-          git remote -v
-          git fetch upstream master
+        git remote add upstream https://$USERNAME:$REPO_KEY@github.com/ManageIQ/manageiq.git
+        git remote set-url origin https://$USERNAME:$REPO_KEY@github.com/borisko123/manageiq.git
+        git remote -v
+        git fetch upstream master
+        git merge upstream/master --allow-unrelated-histories --strategy-option theirs --no-edit
 
-          git merge upstream/master --allow-unrelated-histories
+        git push origin master
+      env:
+        REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+        USERNAME: bk-git-actions
 
-          git push https://$USERNAME:REPO_KEY@github.com/borisko123/manageiq.git master --allow-unrelated-histories
-        env:
-          REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
-          USERNAME: bk-git-actions
-       
