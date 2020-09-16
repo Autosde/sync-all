@@ -1,33 +1,18 @@
 name: Sync Fork All
-
+env:
+  REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+  USERNAME: bot-sync
 on:
   workflow_dispatch: # on button click
 
 jobs:
-  build:
+  sync-manageiq:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: sync
+      uses: borisko123/test-docker-action@main
       with:
-        repository: borisko123/manageiq
-        path: local_manageiq
-        token: ${{secrets.PAT_FOR_PUSH}}
-    - name: clone manageiq
-      run: |
-        cd local_manageiq
-        git status
-
-        git config user.name github-actions-autosde
-        git config user.email github-actions@github.com
-
-        git remote add upstream https://$USERNAME:$REPO_KEY@github.com/ManageIQ/manageiq.git
-        git remote set-url origin https://$USERNAME:$REPO_KEY@github.com/borisko123/manageiq.git
-        git remote -v
-        git fetch upstream master
-        git merge upstream/master --allow-unrelated-histories --strategy-option theirs --no-edit
-
-        git push origin master
-      env:
-        REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
-        USERNAME: bk-git-actions
+        token: ${{ env.REPO_KEY }}
+        repo_from: IBM/manageiq
+        repo_to: Autosde/manageiq
 
