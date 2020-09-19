@@ -24,9 +24,8 @@ jobs:
         token: ${{ env.REPO_KEY }}
         repo_from: IBM/manageiq-schema
         repo_to: Autosde/manageiq-schema
-
   sync-manageiq-decorators:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: sync
       uses: borisko123/test-docker-action@main
