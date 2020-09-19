@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: sync
-      uses: borisko123/test-docker-action@main
+      uses: Autosde/sync-repositories@main
       with:
         token: ${{ env.REPO_KEY }}
         repo_from: IBM/manageiq
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: sync
-      uses: borisko123/test-docker-action@main
+      uses: Autosde/sync-repositories@main@main
       with:
         token: ${{ env.REPO_KEY }}
         repo_from: IBM/manageiq-schema
@@ -28,8 +28,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: sync
-      uses: borisko123/test-docker-action@main
+      uses: Autosde/sync-repositories@main@main
       with:
         token: ${{ env.REPO_KEY }}
         repo_from: IBM/manageiq-decorators
         repo_to: Autosde/manageiq-decorators
+  sync-manageiq-ui-classic:
+    runs-on: ubuntu-latest
+    steps:
+    - name: sync
+      uses: Autosde/sync-repositories@main@main
+      with:
+        token: ${{ env.REPO_KEY }}
+        repo_from: IBM/manageiq-ui-classic
+        repo_to: Autosde/manageiq-ui-classic
