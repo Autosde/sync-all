@@ -1,0 +1,20 @@
+name: Sync Fork matrix
+env:
+  REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+  USERNAME: bot-sync
+on:
+  workflow_dispatch: # on button click
+
+jobs:
+  sync-4:
+    runs-on: ubuntu-latest
+    strategy:    
+      matrix:
+        repos: [manageiq, manageiq-ui-classic]
+    steps:
+    - name: sync
+      uses: Autosde/sync-repositories@main
+      with:
+        token: ${{ env.REPO_KEY }}
+        repo_from: IBM/${{matrix.repos}}
+        repo_to: Autosde/${{matrix.repos}}
