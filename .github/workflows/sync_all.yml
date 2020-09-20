@@ -3,6 +3,8 @@ env:
   REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
   USERNAME: bot-sync
 on:
+  schedule:
+    - cron: "*/10 * * * *"
   workflow_dispatch: # on button click
 
 jobs:
