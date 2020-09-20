@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: sync
-      uses: Autosde/sync-repositories@main@main
+      uses: Autosde/sync-repositories@main
       with:
         token: ${{ env.REPO_KEY }}
         repo_from: IBM/manageiq-schema
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: sync
-      uses: Autosde/sync-repositories@main@main
+      uses: Autosde/sync-repositories@main
       with:
         token: ${{ env.REPO_KEY }}
         repo_from: IBM/manageiq-ui-classic
