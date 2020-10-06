@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:    
       matrix:
-        repos: [manageiq, manageiq-ui-clasic, manageiq-decorators, manageiq-schema, manageiq-api, manageiq-providers-autosde]
+        repos: [manageiq, manageiq-ui-classic, manageiq-decorators, manageiq-schema, manageiq-api, manageiq-providers-autosde]
     steps:
     - name: sync
       uses: Autosde/sync-repositories@main
